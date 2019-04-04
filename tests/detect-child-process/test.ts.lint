@@ -1,0 +1,56 @@
+import * as child_process from "child_process";
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [Found child_process import]
+import * as child_process_1 from 'child_process';
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [Found child_process import]
+import child_process_2 = require('child_process');
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [Found child_process import]
+
+import {exec} from 'child_process';
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [Found child_process import]
+import {spawn} from 'child_process';
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [Found child_process import]
+
+import {exec as someAnotherExec} from 'child_process';
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [Found child_process import]
+import {spawn as someAnotherSpawn} from 'child_process';
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [Found child_process import]
+
+import * as anotherModule from 'anotherModule';
+
+
+child_process.exec('ls')
+child_process.exec(cmd)
+~~~~~~~~~~~~~~~~~~~~~~~ [Found child_process.exec() with non-literal first argument]
+
+child_process.spawn('ls')
+child_process.spawn(cmd)
+
+child_process_1.exec('ls')
+child_process_1.exec(cmd)
+~~~~~~~~~~~~~~~~~~~~~~~~~ [Found child_process.exec() with non-literal first argument]
+
+child_process_1.spawn('ls')
+child_process_1.spawn(cmd)
+
+child_process_2.exec('ls')
+child_process_2.exec(cmd)
+~~~~~~~~~~~~~~~~~~~~~~~~~ [Found child_process.exec() with non-literal first argument]
+
+child_process_2.spawn('ls')
+child_process_2.spawn(cmd)
+
+exec('ls')
+exec(cmd)
+~~~~~~~~~ [Found child_process.exec() with non-literal first argument]
+
+spawn('ls')
+spawn(cmd)
+
+someAnotherExec('ls')
+someAnotherExec(cmd)
+~~~~~~~~~~~~~~~~~~~~ [Found child_process.exec() with non-literal first argument]
+
+someAnotherSpawn('ls')
+someAnotherSpawn(cmd)
+
+anotherModule.exec(cmd)
